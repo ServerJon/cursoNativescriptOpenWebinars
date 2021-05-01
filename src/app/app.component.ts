@@ -8,6 +8,8 @@ import {
 } from 'nativescript-ui-sidedrawer'
 import { filter } from 'rxjs/operators'
 import { Application } from '@nativescript/core'
+import { User } from './shared/interfaces/user.interface'
+import { getString } from '@nativescript/core/application-settings'
 
 @Component({
   selector: 'ns-app',
@@ -17,8 +19,12 @@ export class AppComponent implements OnInit {
   private _activatedUrl: string
   private _sideDrawerTransition: DrawerTransitionBase
 
+  public user: User;
+
   constructor(private router: Router, private routerExtensions: RouterExtensions) {
     // Use the component constructor to inject services.
+
+    this.reloadUser();
   }
 
   ngOnInit(): void {
@@ -31,6 +37,7 @@ export class AppComponent implements OnInit {
   }
 
   get sideDrawerTransition(): DrawerTransitionBase {
+    this.reloadUser();
     return this._sideDrawerTransition
   }
 
@@ -47,5 +54,17 @@ export class AppComponent implements OnInit {
 
     const sideDrawer = <RadSideDrawer>Application.getRootView()
     sideDrawer.closeDrawer()
+  }
+
+  private reloadUser(): void {
+
+    if (getString('userProfile')) {
+        this.user = JSON.parse(getString('userProfile'));
+    } else {
+        this.user = {
+            name: 'User Name',
+            email: 'username@mail.com'
+        };
+    }
   }
 }

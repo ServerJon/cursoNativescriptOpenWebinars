@@ -1,0 +1,14 @@
+<ActionBar>
+    <Label text="User Profile"></Label>
+</ActionBar>
+
+<FlexboxLayout flexDirection="column" justifyContent="center" >
+
+    <TextField hint="Email" keyboardType="email" autocorrect="false" autocapitalizationType="none"
+        [(ngModel)]="user.email" class="h2"></TextField>
+
+    <TextField hint="Name" [(ngModel)]="user.name" class="h2"></TextField>
+
+    <Button text="Guardar" (tap)="save()" style="background-color: blue; color: white;" class="h2"></Button>
+
+</FlexboxLayout>
