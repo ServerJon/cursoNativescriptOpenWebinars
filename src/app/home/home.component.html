@@ -10,9 +10,16 @@
 <GridLayout class="page__content">
   <Label class="page__content-icon fas" text="&#xf015;"></Label>
 
-  <GridLayout rows="50,*,50" class="tarjeta">
-      <Label text="Curso de Nativescript" class="h2"></Label>
-      <Image src="res://logoopenwebinarsrectangular" row="1" style="background-color: white;"></Image>
-      <Label text="Bienvenidos al curso de Nativescript más Angular" textWrap="true" row="2" class="body"></Label>
-  </GridLayout>
+  <RadListView [items]="dataPhotos" tkExampleTitle tkToggleNavButton style="background-color: rgb(237, 237, 237);">
+        <ng-template tkListItemTemplate let-item="item">
+            <StackLayout>
+                <GridLayout rows="50,*,50" columns="*" class="tarjeta">
+                    <Label [text]="item?.title" class="h2"></Label>
+                    <Image [src]="item?.url" row="1"></Image>
+                    <!-- <Image src="res://logoopenwebinarsrectangular" row="1"></Image> -->
+                    <Label [text]="item?.thumbnailUrl" textWrap="true" row="2" class="body"></Label>
+                </GridLayout>
+            </StackLayout>
+        </ng-template>
+    </RadListView>
 </GridLayout>
