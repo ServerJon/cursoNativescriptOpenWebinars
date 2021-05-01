@@ -1,7 +1,7 @@
 import { NativeScriptConfig } from '@nativescript/core';
 
 export default {
-  id: 'org.nativescript.cursoNativescriptOpenWebinars',
+  id: 'org.openwebinars.cursoNativescript',
   appPath: 'src',
   appResourcesPath: 'App_Resources',
   android: {
